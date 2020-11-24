@@ -21,7 +21,6 @@ const patisserie = {
   },
 };
 
-let stock = 0;
 const cakeType = document.getElementById('cakeSelect').value;
 const orderAmount = document.getElementById('cakeAmount').value;
 const orderBtn = document.getElementById('submit_btn');
@@ -64,19 +63,21 @@ const stockControl = (resolvedValueArray) => {
   
     //setTimeout
     return new Promise((resolve, reject) => {
-      let stock = patisserie.order[0].stock - order
-      if ()
+      let stock = patisserie.order[0].stock - order[1]
+      if (stock < 3) {
+        console.log('Your stocks ara enough.')
+        resolve ('Your stocks ara enough.')
+      } else {
+        console.log('Your stocks ara not enough.')
+        reject ('Your stocks ara not enough.')
+      }
     })
 
   }
 
 
 
-orderBtn.onclick = ()=>{
-  // let order = ['contessa', 2];   // sample order template
-  checkOrder(cakeType).then(stockControl(a))
-
-  //then
-  //catch  
-
-}
+orderBtn.addEventListener('click', function () {
+  let orders = [cakeType, orderAmount];   
+  checkOrder(orders).then(payment()).then(stockControl()).catch()
+})
