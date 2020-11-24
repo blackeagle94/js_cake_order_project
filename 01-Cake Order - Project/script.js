@@ -21,6 +21,7 @@ const patisserie = {
   },
 };
 
+let stock = 0;
 const cakeType = document.getElementById('cakeSelect').value;
 const orderAmount = document.getElementById('cakeAmount').value;
 const orderBtn = document.getElementById('submit_btn');
